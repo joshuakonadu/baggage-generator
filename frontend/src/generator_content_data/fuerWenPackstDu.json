@@ -6,7 +6,7 @@
         { "text": "Herr", "value": "m" },
         { "text": "Dame", "value": "w" }
       ],
-      "selectAgeId": 10,
+      "selectAgeId": "",
       "optionsAge": [
         { "text": "<1", "value": 10 },
         { "text": "1-3", "value": 11 },

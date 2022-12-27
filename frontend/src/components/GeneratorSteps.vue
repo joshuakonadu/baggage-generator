@@ -8,18 +8,34 @@ const generatorSteps = {
   1: ForWhom,
 };
 
+const disableButton = ref(true);
+
+const setDisabledButton = function (bool) {
+  disableButton.value = bool;
+};
+
 const currentStep = computed(() => {
   return generatorSteps[page.value];
 });
+
+const saveSelectionInStore = {};
+//TODO: SAVE ALL SELECTION STEPS IN STORE
 </script>
 
 <template>
   <v-container>
     <div class="component-size">
-      <component :is="currentStep"></component>
+      <component
+        :is="currentStep"
+        :saveSelectionInStore="saveSelectionInStore"
+        @setDisabledButton="setDisabledButton"
+      ></component>
     </div>
     <div class="button-section">
-      <generator-nav-buttons :page="page"></generator-nav-buttons>
+      <generator-nav-buttons
+        :page="page"
+        :disableButton="disableButton"
+      ></generator-nav-buttons>
     </div>
   </v-container>
 </template>

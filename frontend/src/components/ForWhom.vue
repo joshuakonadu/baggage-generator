@@ -1,6 +1,8 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 const persons = ref([]);
+
+const emit = defineEmits(["setDisabledButton"]);
 
 onMounted(() => {
   const path = "/src/generator_content_data/fuerWenPackstDu.json";
@@ -34,6 +36,23 @@ const createNewPerson = function () {
     ],
   };
 };
+
+watch(
+  persons,
+  (newVal) => {
+    const checkSetAge = newVal.find(
+      (elem) => typeof elem.selectAgeId === "number"
+    );
+    if (checkSetAge?.selectAgeId) {
+      emit("setDisabledButton", false);
+    } else {
+      emit("setDisabledButton", true);
+    }
+  },
+  {
+    deep: true,
+  }
+);
 </script>
 
 <template>
