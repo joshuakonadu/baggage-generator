@@ -1,0 +1,7 @@
+{
+  "cards": [
+    { "icon": "fas fa-globe-americas", "text": "ins Ausland", "id": 20 },
+    { "icon": "fas fa-umbrella-beach", "text": "ans Meer oder die See", "id": 21 },
+    { "icon": "fas fa-globe-americas", "text": "in die Berge", "id": 22 }
+  ]
+}
