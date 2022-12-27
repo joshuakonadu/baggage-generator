@@ -1,22 +1,14 @@
 <script setup>
-import { ref, onMounted, watch } from "vue";
-const persons = ref([]);
+import { watch } from "vue";
+import { useGeneratorStore } from "/src/stores/generator.js";
+
+const generatorStore = useGeneratorStore();
 
 const emit = defineEmits(["setDisabledButton"]);
 
-onMounted(() => {
-  const path = "/src/generator_content_data/fuerWenPackstDu.json";
-  fetch(path)
-    .then((response) => response.json())
-    .then((data) => {
-      persons.value = data.persons;
-      console.log(data.persons);
-    });
-});
-
 const addPerson = function () {
   const newPerson = createNewPerson();
-  persons.value.push(newPerson);
+  generatorStore.addPerson(newPerson);
 };
 
 const createNewPerson = function () {
@@ -38,12 +30,12 @@ const createNewPerson = function () {
 };
 
 watch(
-  persons,
+  generatorStore.persons,
   (newVal) => {
-    const checkSetAge = newVal.find(
+    const checkSetAge = newVal.every(
       (elem) => typeof elem.selectAgeId === "number"
     );
-    if (checkSetAge?.selectAgeId) {
+    if (checkSetAge) {
       emit("setDisabledButton", false);
     } else {
       emit("setDisabledButton", true);
@@ -59,7 +51,7 @@ watch(
   <div>
     <h1>Für wen packst du?</h1>
     <div class="mb-4">Alter:</div>
-    <div class="mb-6" v-for="person in persons" :key="person">
+    <div class="mb-6" v-for="person in generatorStore.persons" :key="person">
       <v-row>
         <v-col md="4">
           <v-btn-toggle

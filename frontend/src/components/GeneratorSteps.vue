@@ -1,11 +1,16 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onUnmounted } from "vue";
 import ForWhom from "./ForWhom.vue";
+import HowLong from "./HowLong.vue";
 import GeneratorNavButtons from "./GeneratorNavButtons.vue";
+import { useGeneratorStore } from "/src/stores/generator.js";
+
+const generatorStore = useGeneratorStore();
 
 const page = ref(1);
 const generatorSteps = {
   1: ForWhom,
+  2: HowLong,
 };
 
 const disableButton = ref(true);
@@ -18,7 +23,17 @@ const currentStep = computed(() => {
   return generatorSteps[page.value];
 });
 
-const saveSelectionInStore = {};
+const increasePage = function () {
+  page.value++;
+};
+
+const decreasePage = function () {
+  page.value--;
+};
+
+onUnmounted(() => {
+  generatorStore.$reset();
+});
 //TODO: SAVE ALL SELECTION STEPS IN STORE
 </script>
 
@@ -35,6 +50,8 @@ const saveSelectionInStore = {};
       <generator-nav-buttons
         :page="page"
         :disableButton="disableButton"
+        @pressedNext="increasePage"
+        @pressedBack="decreasePage"
       ></generator-nav-buttons>
     </div>
   </v-container>
