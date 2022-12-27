@@ -7,20 +7,19 @@ const page = ref(1);
 const generatorSteps = {
   1: ForWhom,
 };
-console.log(page.value);
 
 const currentStep = computed(() => {
   return generatorSteps[page.value];
 });
-
-console.log(currentStep.value);
 </script>
 
 <template>
   <v-container>
     <div class="component-size">
       <component :is="currentStep"></component>
-      <generator-nav-buttons></generator-nav-buttons>
+    </div>
+    <div class="button-section">
+      <generator-nav-buttons :page="page"></generator-nav-buttons>
     </div>
   </v-container>
 </template>
@@ -29,8 +28,13 @@ console.log(currentStep.value);
 .component-size {
   width: 100%;
   max-width: 800px;
-  height: 80vh;
+  height: 60vh;
   max-height: 900px;
+  margin: 0 auto;
+}
+.button-section {
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
 }
 </style>
