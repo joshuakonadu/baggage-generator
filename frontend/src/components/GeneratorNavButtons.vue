@@ -1,6 +1,5 @@
 <script setup>
 import { useGeneratorStore } from "/src/stores/generator.js";
-import { useBaggageStore } from "/src/stores/baggageList.js";
 import { useRouter } from "vue-router";
 const props = defineProps({
   page: Number,
@@ -9,7 +8,6 @@ const props = defineProps({
 
 const router = useRouter();
 const generatorStore = useGeneratorStore();
-const baggageStore = useBaggageStore();
 
 const emit = defineEmits(["next", "back"]);
 
@@ -26,8 +24,12 @@ const pressedBack = function () {
 };
 
 const createBaggageList = async function () {
-  const generatorState = await generatorStore.getState();
-  baggageStore.generateBaggageList(generatorState);
+  try {
+    await generatorStore.initBaggageListCreation();
+    router.push("/baggage-list");
+  } catch (err) {
+    console.log(err);
+  }
 };
 </script>
 

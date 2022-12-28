@@ -12,8 +12,8 @@ const apiClient = axios.create({
   },
 });
 
-function generateBaggageList(data) {
+function createBaggageList(data) {
   return apiClient.post("/generatebaggagelist", data);
 }
 
-export { generateBaggageList };
+export { createBaggageList };

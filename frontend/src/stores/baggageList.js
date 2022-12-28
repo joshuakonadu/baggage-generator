@@ -1,17 +1,21 @@
 import { defineStore } from "pinia";
-import { baggagelist } from "../services";
+import { createBaggageList } from "../services";
 
 export const useBaggageStore = defineStore("baggagelist", {
   state: () => {
     return {
       result: {},
+      personinfo: [],
+      timeStaying: "",
     };
   },
   actions: {
     generateBaggageList(data) {
-      return baggagelist.generateBaggageList({ data }).then((data) => {
-        console.log(data);
-        return;
+      return createBaggageList({ data }).then((data) => {
+        this.result = data.result.data;
+        this.personinfo = data.result.personinfo;
+        this.timeStaying = data.result.days;
+        return "";
       });
     },
   },

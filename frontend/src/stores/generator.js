@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useBaggageStore } from "./baggageList.js";
 
 export const useGeneratorStore = defineStore("generator", {
   state: () => {
@@ -68,17 +69,26 @@ export const useGeneratorStore = defineStore("generator", {
         ? this.personalNeeds[prop].push(id)
         : this.personalNeeds[prop].splice(findIndex, 1);
     },
-    getState() {
+    async initBaggageListCreation() {
       const stateObj = {
         persons: this.persons,
         howLong: this.howLong,
         howToTravel: this.howToTravel,
         vacationType: this.vacationType,
-        wheaterAndTemperature: [...this.wheater, ...this.temperatures],
+        wheaterAndTemperature: {
+          wheaters: this.wheater,
+          temperatures: this.temperatures,
+        },
         sports: this.sports,
         personalNeeds: this.personalNeeds,
       };
-      return Promise.resolve(stateObj);
+      const baggageStore = useBaggageStore();
+      try {
+        await baggageStore.generateBaggageList(stateObj);
+        return Promise.resolve("");
+      } catch (err) {
+        return Promise.reject(err);
+      }
     },
   },
 });
