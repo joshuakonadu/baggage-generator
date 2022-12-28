@@ -1,4 +1,4 @@
-function getHowLongPageCards() {
+function getHowLongCards() {
   return [
     { icon: "fas fa-globe-americas", text: "ins Ausland", id: 20 },
     { icon: "fas fa-umbrella-beach", text: "ans Meer oder die See", id: 21 },
@@ -6,7 +6,7 @@ function getHowLongPageCards() {
   ];
 }
 
-function getHowLongPageItems() {
+function getHowLongItems() {
   return [
     { title: "1 Tag", value: 1 },
     { title: "2 Tage", value: 2 },
@@ -25,4 +25,4 @@ function getHowLongPageItems() {
   ];
 }
 
-export { getHowLongPageCards, getHowLongPageItems };
+export { getHowLongCards, getHowLongItems };

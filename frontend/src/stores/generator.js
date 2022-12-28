@@ -24,6 +24,10 @@ export const useGeneratorStore = defineStore("generator", {
         time: 3,
         planned: [],
       },
+      howToTravel: "",
+      vacationType: "",
+      wheater: [],
+      temperatures: [],
     };
   },
   actions: {
@@ -32,11 +36,22 @@ export const useGeneratorStore = defineStore("generator", {
     },
     setOrUnsetPlannedCard(id) {
       const findIndex = this.howLong.planned.findIndex((elem) => elem === id);
-      if (findIndex === -1) {
-        this.howLong.planned.push(id);
+      findIndex === -1
+        ? this.howLong.planned.push(id)
+        : this.howLong.planned.splice(findIndex, 1);
+    },
+    setOnlyOneCard(id, prop) {
+      if (this[prop] === id) {
+        this[prop] = "";
+        return Promise.resolve(true);
       } else {
-        this.howLong.planned.splice(findIndex, 1);
+        this[prop] = id;
+        return Promise.resolve(false);
       }
+    },
+    setWheaterAndTemperatureCards(id, prop) {
+      const findIndex = this[prop].findIndex((elem) => elem === id);
+      findIndex === -1 ? this[prop].push(id) : this[prop].splice(findIndex, 1);
     },
   },
 });

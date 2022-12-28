@@ -17,6 +17,7 @@
 }
 .v-card-item__prepend{
     margin: 0 auto;
+    padding: 0;
 }
 .v-card-text{
     text-align: center;

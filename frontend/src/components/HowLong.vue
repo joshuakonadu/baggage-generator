@@ -1,13 +1,16 @@
 <script setup>
 import { useGeneratorStore } from "/src/stores/generator.js";
 import {
-  getHowLongPageCards,
-  getHowLongPageItems,
-} from "/src/generator_content_data/generator_howlong_data.js";
+  getHowLongCards,
+  getHowLongItems,
+} from "/src/generatorHelpers/howLongHelper.js";
+
+const emit = defineEmits(["setDisabledButton"]);
+emit("setDisabledButton", false);
 
 const generatorStore = useGeneratorStore();
-const cards = getHowLongPageCards();
-const days = getHowLongPageItems();
+const cards = getHowLongCards();
+const days = getHowLongItems();
 
 const setOrUnsetCard = function (cardId) {
   generatorStore.setOrUnsetPlannedCard(cardId);

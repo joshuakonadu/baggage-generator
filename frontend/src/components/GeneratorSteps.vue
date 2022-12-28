@@ -2,6 +2,9 @@
 import { ref, computed, onUnmounted } from "vue";
 import ForWhom from "./ForWhom.vue";
 import HowLong from "./HowLong.vue";
+import HowToTravel from "./HowToTravel.vue";
+import TypeOfVacation from "./TypeOfVacation.vue";
+import ChooseWheater from "./ChooseWheater.vue";
 import GeneratorNavButtons from "./GeneratorNavButtons.vue";
 import { useGeneratorStore } from "/src/stores/generator.js";
 
@@ -11,6 +14,9 @@ const page = ref(1);
 const generatorSteps = {
   1: ForWhom,
   2: HowLong,
+  3: HowToTravel,
+  4: TypeOfVacation,
+  5: ChooseWheater,
 };
 
 const disableButton = ref(true);
@@ -42,7 +48,6 @@ onUnmounted(() => {
     <div class="component-size">
       <component
         :is="currentStep"
-        :saveSelectionInStore="saveSelectionInStore"
         @setDisabledButton="setDisabledButton"
       ></component>
     </div>
@@ -61,9 +66,8 @@ onUnmounted(() => {
 .component-size {
   width: 100%;
   max-width: 800px;
-  height: 60vh;
-  max-height: 900px;
-  margin: 0 auto;
+  min-height: 60vh;
+  margin: 0 auto 1em auto;
 }
 .button-section {
   width: 100%;
