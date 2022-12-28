@@ -17,7 +17,7 @@ const router = createRouter({
     {
       path: "/baggage-list",
       name: "baggage-list",
-      component: () => import("../views/baggageListView.vue"),
+      component: () => import("../views/BaggageListView.vue"),
     },
   ],
 });

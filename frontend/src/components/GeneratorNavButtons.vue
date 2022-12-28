@@ -26,7 +26,7 @@ const pressedBack = function () {
 const createBaggageList = async function () {
   try {
     await generatorStore.initBaggageListCreation();
-    router.push("/baggage-list");
+    router.push({ path: "/baggage-list" });
   } catch (err) {
     console.log(err);
   }

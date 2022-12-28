@@ -11,7 +11,7 @@ export const useBaggageStore = defineStore("baggagelist", {
   },
   actions: {
     generateBaggageList(data) {
-      return createBaggageList({ data }).then((data) => {
+      return createBaggageList({ data }).then(({ data }) => {
         this.result = data.result.data;
         this.personinfo = data.result.personinfo;
         this.timeStaying = data.result.days;

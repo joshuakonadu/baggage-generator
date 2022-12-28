@@ -6,7 +6,6 @@ module.exports = {
 };
 
 function getFilteredResult(configureData) {
-  console.log("FILTERED DATA");
   let finalData = {};
   const personinfo = [];
   const days = configureData.howLong.time;

@@ -10,7 +10,7 @@ const categoryMap = getBaggageListCategoryies();
 
 <template>
   <v-col md="4" lg="3">
-    <v-card class="pa-5">
+    <v-card class="pa-5 h-100">
       <h3>{{ categoryMap[props.category] }}</h3>
       <div v-for="item in data" :key="item.value">
         <div v-if="!item.subcategories">
