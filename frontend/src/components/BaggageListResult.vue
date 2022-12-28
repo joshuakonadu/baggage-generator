@@ -34,7 +34,7 @@ const convertGender = function (genderChar, age) {
 
 <template>
   <div class="baggage-list-centering">
-    <h1 class="text-center">
+    <h1 class="text-center mt-4">
       Gepäckliste für {{ baggageStore.timeStaying }} Tage
     </h1>
     <div
@@ -42,7 +42,7 @@ const convertGender = function (genderChar, age) {
       v-for="(prop, index) in baggageStore.result"
       :key="index"
     >
-      <div class="d-flex">
+      <div class="d-flex mb-3">
         <h2>
           {{
             convertGender(
