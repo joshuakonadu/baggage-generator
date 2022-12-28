@@ -5,6 +5,8 @@ import HowLong from "./HowLong.vue";
 import HowToTravel from "./HowToTravel.vue";
 import TypeOfVacation from "./TypeOfVacation.vue";
 import ChooseWheater from "./ChooseWheater.vue";
+import ChooseSportVue from "./ChooseSport.vue";
+import PersonalNeeds from "./PersonalNeeds.vue";
 import GeneratorNavButtons from "./GeneratorNavButtons.vue";
 import { useGeneratorStore } from "/src/stores/generator.js";
 
@@ -17,6 +19,8 @@ const generatorSteps = {
   3: HowToTravel,
   4: TypeOfVacation,
   5: ChooseWheater,
+  6: ChooseSportVue,
+  7: PersonalNeeds,
 };
 
 const disableButton = ref(true);

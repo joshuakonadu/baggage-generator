@@ -13,7 +13,7 @@ const cardsTemperature = getChooseWheaterTemperatureCards();
 const generatorStore = useGeneratorStore();
 
 const setOrUnsetCard = function (cardId, prop) {
-  generatorStore.setWheaterAndTemperatureCards(cardId, prop);
+  generatorStore.setOrUnsetMultipleCards(cardId, prop);
 };
 </script>
 

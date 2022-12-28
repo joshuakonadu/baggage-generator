@@ -28,6 +28,12 @@ export const useGeneratorStore = defineStore("generator", {
       vacationType: "",
       wheater: [],
       temperatures: [],
+      sports: [],
+      personalNeeds: {
+        general: [],
+        technology: [],
+        medicine: [],
+      },
     };
   },
   actions: {
@@ -49,9 +55,30 @@ export const useGeneratorStore = defineStore("generator", {
         return Promise.resolve(false);
       }
     },
-    setWheaterAndTemperatureCards(id, prop) {
+    setOrUnsetMultipleCards(id, prop) {
       const findIndex = this[prop].findIndex((elem) => elem === id);
       findIndex === -1 ? this[prop].push(id) : this[prop].splice(findIndex, 1);
+    },
+
+    setOrUnsetPersonalNeedsCards(id, prop) {
+      const findIndex = this.personalNeeds[prop].findIndex(
+        (elem) => elem === id
+      );
+      findIndex === -1
+        ? this.personalNeeds[prop].push(id)
+        : this.personalNeeds[prop].splice(findIndex, 1);
+    },
+    getState() {
+      const stateObj = {
+        persons: this.persons,
+        howLong: this.howLong,
+        howToTravel: this.howToTravel,
+        vacationType: this.vacationType,
+        wheaterAndTemperature: [...this.wheater, ...this.temperatures],
+        sports: this.sports,
+        personalNeeds: this.personalNeeds,
+      };
+      return Promise.resolve(stateObj);
     },
   },
 });
