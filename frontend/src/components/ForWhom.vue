@@ -48,10 +48,10 @@ watch(
 </script>
 
 <template>
-  <div>
-    <h1>Für wen packst du?</h1>
+  <div class="generator-positioning">
+    <h1 class="mb-10">Für wen packst du?</h1>
     <div class="mb-4">Alter:</div>
-    <div class="mb-6" v-for="person in generatorStore.persons" :key="person">
+    <div class="mb-16" v-for="person in generatorStore.persons" :key="person">
       <v-row>
         <v-col md="4">
           <v-btn-toggle

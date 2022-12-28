@@ -1,38 +1,47 @@
 <script setup>
+import { useGeneratorStore } from "/src/stores/generator.js";
 import {
-  howLongPageCards,
-  howLongPageItems,
-} from "/src/generator_content_data/generator_cards.js";
+  getHowLongPageCards,
+  getHowLongPageItems,
+} from "/src/generator_content_data/generator_howlong_data.js";
 
-const cards = howLongPageCards();
-const days = howLongPageItems();
+const generatorStore = useGeneratorStore();
+const cards = getHowLongPageCards();
+const days = getHowLongPageItems();
+
+const setOrUnsetCard = function (cardId) {
+  generatorStore.setOrUnsetPlannedCard(cardId);
+};
 </script>
 
 <template>
-  <div>
-    <h1>Was hast du geplant?</h1>
-    <div class="d-flex">
-      <div>Ich verreise</div>
-      <div class="max-width">
+  <div class="generator-positioning">
+    <h1 class="mb-10">Was hast du geplant?</h1>
+    <div class="d-flex mb-10">
+      <div class="mr-3 mt-2">Ich verreise</div>
+      <div class="max-width mr-3">
         <v-select
+          v-model="generatorStore.howLong.time"
           :items="days"
           label="Wähle Tage aus"
           variant="solo"
           density="compact"
         ></v-select>
       </div>
-      <div>und</div>
+      <div class="mt-2">und</div>
     </div>
-    <v-row>
-      <v-card
-        v-for="card in cards"
-        :key="card"
-        class="mr-4 mb-4"
-        stacked
-        :prepend-icon="card.icon"
-        :text="card.text"
-        width="150"
-      ></v-card>
+    <v-row class="justify-center">
+      <v-col v-for="card in cards" :key="card" class="mb-4" md="4" xl="3">
+        <v-card
+          class="card"
+          :class="{
+            'card-box-shadow': generatorStore.howLong.planned.includes(card.id),
+          }"
+          :prepend-icon="card.icon"
+          :text="card.text"
+          @click="setOrUnsetCard(card.id)"
+        ></v-card>
+      </v-col>
     </v-row>
   </div>
 </template>

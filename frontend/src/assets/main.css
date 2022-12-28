@@ -1,3 +1,24 @@
-
-
+.card{
+    cursor: pointer;
+}
+.card-box-shadow{
+    box-shadow: 0 0 6px rgb(0 20 250);
+}
+.generator-positioning{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.v-row{
+    width: 100%;
+}
+.v-card-item{
+    display: flex;
+}
+.v-card-item__prepend{
+    margin: 0 auto;
+}
+.v-card-text{
+    text-align: center;
+}
 
