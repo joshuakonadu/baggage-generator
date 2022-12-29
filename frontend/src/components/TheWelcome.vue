@@ -6,7 +6,7 @@ import { RouterLink } from "vue-router";
   <main>
     <div class="hero-section">
       <RouterLink to="/generator">
-        <v-btn color="primary"> Erstelle deine packliste </v-btn>
+        <v-btn color="primary"> Erstelle deine Gepäckliste </v-btn>
       </RouterLink>
     </div>
   </main>

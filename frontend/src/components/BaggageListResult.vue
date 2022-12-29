@@ -52,7 +52,7 @@ const convertGender = function (genderChar, age) {
           }}
         </h2>
         <span class="ml-4 mt-2">{{
-          convertAgeIdToAge(baggageStore.personinfo[index].age)
+          `(${convertAgeIdToAge(baggageStore.personinfo[index].age)})`
         }}</span>
       </div>
       {{ baggageStore.result.length }}

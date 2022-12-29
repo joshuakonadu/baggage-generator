@@ -8,6 +8,7 @@ function getBaggageListCategoryies() {
     6666: "Erste-Hilfe",
     7777: "Sonstiges",
     8888: "Dokumente",
+    8989: "Persönliches",
     9999: "Fahrrad",
     1212: "Technik",
     2323: "Ausland",

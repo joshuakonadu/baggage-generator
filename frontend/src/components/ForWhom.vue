@@ -51,13 +51,19 @@ watch(
   <div class="generator-positioning">
     <h1 class="mb-10">Für wen packst du?</h1>
     <div class="mb-4">Alter:</div>
-    <div class="mb-16" v-for="person in generatorStore.persons" :key="person">
+    <div
+      class="mb-10 w-75"
+      v-for="person in generatorStore.persons"
+      :key="person"
+    >
       <v-row>
         <v-col md="4">
           <v-btn-toggle
             v-model="person.selectGender"
-            color="deep-purple-accent-3"
+            color="indigo"
             rounded="1"
+            divided
+            variant="outlined"
           >
             <v-btn
               v-for="gender in person.optionsGender"
@@ -71,8 +77,10 @@ watch(
         <v-col md="8">
           <v-btn-toggle
             v-model="person.selectAgeId"
-            color="deep-purple-accent-3"
+            color="indigo"
             rounded="1"
+            divided
+            variant="outlined"
           >
             <v-btn
               v-for="age in person.optionsAge"
@@ -85,7 +93,9 @@ watch(
         </v-col>
       </v-row>
     </div>
-    <v-btn color="secondary" @click="addPerson"> Person hinzufügen </v-btn>
+    <v-btn class="mt-4" color="pink" @click="addPerson">
+      Person hinzufügen
+    </v-btn>
   </div>
 </template>
 
