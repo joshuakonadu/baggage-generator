@@ -5,8 +5,8 @@ import { RouterLink } from "vue-router";
 <template>
   <main>
     <div class="hero-section">
-      <RouterLink to="/generator">
-        <v-btn color="primary"> Erstelle deine Gepäckliste </v-btn>
+      <RouterLink class="no-underline" to="/generator">
+        <v-btn color="indigo"> Erstelle deine Gepäckliste </v-btn>
       </RouterLink>
     </div>
   </main>
@@ -20,6 +20,9 @@ import { RouterLink } from "vue-router";
   width: 100%;
   height: 40vh;
   max-height: 500px;
-  background-color: aquamarine;
+  background-color: #e91e63;
+}
+.no-underline {
+  text-decoration: none;
 }
 </style>

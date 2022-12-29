@@ -27,10 +27,12 @@ const pressedBack = function () {
 };
 
 const createBaggageList = async function () {
+  pressedNext();
   try {
     await generatorStore.initBaggageListCreation();
     router.push({ path: "/baggage-list" });
   } catch (err) {
+    pressedBack();
     snackbar.value = true;
     console.log(err);
   }
@@ -38,7 +40,7 @@ const createBaggageList = async function () {
 </script>
 
 <template>
-  <div class="d-flex justify-space-between">
+  <div v-if="props.page !== 8" class="d-flex justify-space-between">
     <v-btn v-if="props.page < 2" @click="backToHome"> Abbrechen </v-btn>
     <v-btn v-else @click="pressedBack">Zurück</v-btn>
     <v-btn
@@ -50,7 +52,9 @@ const createBaggageList = async function () {
       <span v-if="props.disableButton">Bitte Auswahl treffen</span>
       <span v-else>Weiter</span>
     </v-btn>
-    <v-btn v-else @click="createBaggageList"> Packliste erstellen </v-btn>
+    <v-btn v-else color="green" @click="createBaggageList">
+      Packliste erstellen
+    </v-btn>
     <v-snackbar v-model="snackbar">
       Beim erstellen der Gepäckliste ist ein Fehler aufgetreten.
 
