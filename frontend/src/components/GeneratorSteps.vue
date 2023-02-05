@@ -46,7 +46,6 @@ const decreasePage = function () {
 onUnmounted(() => {
   generatorStore.$reset();
 });
-//TODO: SAVE ALL SELECTION STEPS IN STORE
 </script>
 
 <template>
